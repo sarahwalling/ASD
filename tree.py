@@ -1,9 +1,7 @@
 """Binary tree with decision tree semantics and ASCII visualization."""
 
 
-class Node:
-    """A decision tree node."""
-
+class Tree_node:
     def __init__(self, gini, num_samples, num_samples_per_class, predicted_class):
         self.gini = gini
         self.num_samples = num_samples
@@ -14,15 +12,14 @@ class Node:
         self.left = None
         self.right = None
 
-    def debug(self, feature_names, class_names, show_details):
-        """Print an ASCII visualization of the tree."""
-        lines, _, _, _ = self._debug_aux(
+    def print_tree(self, feature_names, class_names, show_details):
+        lines, _, _, _ = self._print_tree(
             feature_names, class_names, show_details, root=True
         )
         for line in lines:
             print(line)
 
-    def _debug_aux(self, feature_names, class_names, show_details, root=False):
+    def _print_tree(self, feature_names, class_names, show_details, root=False):
         is_leaf = not self.right
         if is_leaf:
             lines = [class_names[self.predicted_class]]
@@ -47,21 +44,21 @@ class Node:
             lines.insert(0, "┌" + "─" * (width + 2) + "┐")
             lines.append("└" + "─" * (width + 2) + "┘")
             lines[-2] = "┤" + lines[-2][1:-1] + "├"
-        width += 4  # for padding
+        width += 4
 
         if is_leaf:
             middle = width // 2
             lines[0] = lines[0][:middle] + "╧" + lines[0][middle + 1 :]
             return lines, width, height, middle
 
-        # If not a leaf, must have two children.
-        left, n, p, x = self.left._debug_aux(feature_names, class_names, show_details)
-        right, m, q, y = self.right._debug_aux(feature_names, class_names, show_details)
+        #not a leaf, so must have two children.
+        left, n, p, x = self.left._print_tree(feature_names, class_names, show_details)
+        right, m, q, y = self.right._print_tree(feature_names, class_names, show_details)
         top_lines = [n * " " + line + m * " " for line in lines[:-2]]
-        # fmt: off
+
         middle_line = x * " " + "┌" + (n - x - 1) * "─" + lines[-2] + y * "─" + "┐" + (m - y - 1) * " "
         bottom_line = x * " " + "│" + (n - x - 1) * " " + lines[-1] + y * " " + "│" + (m - y - 1) * " "
-        # fmt: on
+
         if p < q:
             left += [n * " "] * (q - p)
         elif q < p:

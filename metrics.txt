@@ -1,0 +1,41 @@
+Trees: 500
+
+Features: 3
+Mean Sensitivity: 78.705%
+Mean Specificity: 92.818%
+Mean Accuracy: 87.968%
+
+Features: 4
+Mean Sensitivity: 81.019%
+Mean Specificity: 93.170%
+Mean Accuracy: 89.349%
+
+Features: 5
+Mean Sensitivity: 80.678%
+Mean Specificity: 92.608%
+Mean Accuracy: 88.757%
+
+Features: 6
+Mean Sensitivity: 81.875%
+Mean Specificity: 93.229%
+Mean Accuracy: 89.546%
+
+Features: 7
+Mean Sensitivity: 80.661%
+Mean Specificity: 91.642%
+Mean Accuracy: 87.968%
+
+Features: 8
+Mean Sensitivity: 79.993%
+Mean Specificity: 92.619%
+Mean Accuracy: 88.363%
+
+Features: 9
+Mean Sensitivity: 83.458%
+Mean Specificity: 93.866%
+Mean Accuracy: 90.335%
+
+Features: 10
+Mean Sensitivity: 82.417%
+Mean Specificity: 91.528%
+Mean Accuracy: 88.757%
